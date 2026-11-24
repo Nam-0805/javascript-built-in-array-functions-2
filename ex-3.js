@@ -373,5 +373,10 @@ const bills = [
   },
 ];
 
-// Start coding here
-const billMembers;
+function filterBillMembers (bills) {
+    return bills.filter((Text) => Text.member !== null ).map((names) => names.member.name); 
+    //map เข้าถึงสมาชิกแต่ละตัวเพื่อดึงค่าใน member.name ออกมา
+    //ใช้ map เลยไม่ได้เพราะเมื่ออ่านเจอ member : null จะ error
+}
+const billMembers = filterBillMembers (bills);
+console.log(billMembers);

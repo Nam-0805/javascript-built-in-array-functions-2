@@ -372,7 +372,10 @@ const bills = [
     pointRate: 0.01,
   },
 ];
+// filter ==> key.member !== null
+function filterBills (bill) {
+  return bills.filter((bill) => bill.member !== null);
+}
 
-// Start coding here
-
-const newBills;
+const newBills = filterBills (bills);
+console.log(newBills);

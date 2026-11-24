@@ -373,5 +373,16 @@ const bills = [
   },
 ];
 
-// Start coding here
-const totalMembers;
+function filterBillMembers (bills) {
+  return bills
+      .filter((Text) => Text.member !== null )
+      .map((names) => names.member.name) //ใช้ map เลยไม่ได้เพราะเมื่ออ่านเจอ member : null จะ error
+      .reduce((sum,name) => { // sum เหมือนใบรายชื่อ name ชื่อแต่ละชื่อ
+        if (!sum.includes(name)){ // ! คือกลับคำสั่ง ว่า ชื่อนี้ยังไม่มีในรายชื่อใช่ไหม ถ้ามีแล้วไม่ใส่ จะได้ไม่ซ้ำ
+          sum.push(name);
+        }
+        return sum;
+      }, []).length; // เซคค่าตั้งต้นเป็น []
+}
+const billMembers = filterBillMembers (bills);
+console.log(`Unique Members Count: ${billMembers}`); // ${billMembers.length}
